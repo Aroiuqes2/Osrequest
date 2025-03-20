@@ -44,12 +44,12 @@ async function sendToDiscord(beatmapId, username) {
 
         const beatmap = response.data[0];
         const embed = {
-            title: `${beatmap.artist} - ${beatmap.title} [${beatmap.version}]`,
+            title: `${beatmap.artist} - ${beatmap.title} [${beatmap.version}] (${parseFloat(beatmap.difficultyrating).toFixed(2)}★)`,
             url: `https://osu.ppy.sh/b/${beatmapId}`,
             color: 16711680,
             fields: [
                 { name: "Mapper", value: beatmap.creator, inline: true },
-                { name: "Star Rating", value: beatmap.difficultyrating, inline: true },
+                { name: "Star Rating", value: `${parseFloat(beatmap.difficultyrating).toFixed(2)}★`, inline: true },
                 { name: "BPM", value: beatmap.bpm, inline: true },
                 { name: "Requested by", value: username, inline: false }
             ],
